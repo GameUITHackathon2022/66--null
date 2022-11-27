@@ -1,0 +1,167 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Script/Map/World.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Card/CardGetter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/Card/HumanCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/Card/WorkCard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resource/Graphic/Map/background.png" type="Texture" id=5]
+[ext_resource path="res://Scene/Card/DisasterCard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scene/HUD/StatBorder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Resource/Graphic/Card/work.png" type="Texture" id=8]
+[ext_resource path="res://Resource/Graphic/Card/mine.png" type="Texture" id=9]
+[ext_resource path="res://Resource/Graphic/Card/deforest.png" type="Texture" id=10]
+[ext_resource path="res://Resource/Graphic/Map/under_background.png" type="Texture" id=11]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=12]
+
+[node name="World" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="UnderBackground" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 11 )
+
+[node name="Field" type="Sprite" parent="."]
+position = Vector2( 640, 360 )
+texture = ExtResource( 5 )
+
+[node name="FieldCollision" type="StaticBody2D" parent="."]
+collision_layer = 32768
+collision_mask = 16384
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FieldCollision"]
+visible = false
+position = Vector2( 0, 9 )
+polygon = PoolVector2Array( 0, 51, 1280, 50, 1315, -58, -76, -36 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="FieldCollision"]
+visible = false
+position = Vector2( -7, -4 )
+scale = Vector2( 1.02198, 1 )
+polygon = PoolVector2Array( 236, 23, 184, 774, -128, 798, -125, -80 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="FieldCollision"]
+visible = false
+polygon = PoolVector2Array( 91, 664, 1347, 657, 1327, 841, 57, 874 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="FieldCollision"]
+visible = false
+polygon = PoolVector2Array( 1071, 20, 1122, 785, 1724, 659, 1455, -84 )
+
+[node name="CardGetter" parent="." instance=ExtResource( 2 )]
+
+[node name="HumanCard" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 639, 353 )
+
+[node name="Actions" type="Node2D" parent="."]
+
+[node name="Pos1" type="Position2D" parent="Actions"]
+position = Vector2( 900, 139 )
+
+[node name="Pos2" type="Position2D" parent="Actions"]
+position = Vector2( 1010, 139 )
+
+[node name="Pos3" type="Position2D" parent="Actions"]
+position = Vector2( 900, 261 )
+
+[node name="Pos4" type="Position2D" parent="Actions"]
+position = Vector2( 1010, 261 )
+
+[node name="Pos7" type="Position2D" parent="Actions"]
+position = Vector2( 956, 261 )
+
+[node name="Pos5" type="Position2D" parent="Actions"]
+position = Vector2( 900, 383 )
+
+[node name="Pos6" type="Position2D" parent="Actions"]
+position = Vector2( 1010, 383 )
+
+[node name="Works" type="Node2D" parent="."]
+visible = false
+position = Vector2( 39, -1 )
+
+[node name="WorkCard" parent="Works" instance=ExtResource( 4 )]
+position = Vector2( 731, 568 )
+work_type = 2
+timer_time = 4.0
+
+[node name="Work" parent="Works/WorkCard" index="1"]
+texture = ExtResource( 9 )
+
+[node name="WorkCard2" parent="Works" instance=ExtResource( 4 )]
+position = Vector2( 629, 569 )
+work_type = 1
+timer_time = 4.0
+
+[node name="Work" parent="Works/WorkCard2" index="1"]
+texture = ExtResource( 10 )
+
+[node name="WorkCard3" parent="Works" instance=ExtResource( 4 )]
+position = Vector2( 526, 570 )
+timer_time = 5.0
+
+[node name="Work" parent="Works/WorkCard3" index="1"]
+texture = ExtResource( 8 )
+
+[node name="StatBorder" parent="." instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 988, 571 )
+
+[node name="EventCards" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.529412 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 464.0
+margin_top = 507.0
+margin_right = 844.0
+margin_bottom = 547.0
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=30 freq=2]Chọn một thẻ bất kỳ[/wave][/center]"
+text = "Chọn một thẻ bất kỳ"
+
+[node name="Disaster" type="Node2D" parent="."]
+
+[node name="DisasterPos" type="Position2D" parent="Disaster"]
+position = Vector2( 313, 172 )
+
+[node name="AnimationAppear" type="Position2D" parent="Disaster"]
+position = Vector2( 650, 343 )
+
+[node name="Flood" parent="Disaster" instance=ExtResource( 6 )]
+position = Vector2( 515, 348 )
+
+[node name="Drought" parent="Disaster" instance=ExtResource( 6 )]
+position = Vector2( 780, 347 )
+disaster_type = 1
+
+[node name="Win" type="Node2D" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="Win"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.529412 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Win"]
+pause_mode = 2
+margin_left = 342.0
+margin_top = 235.0
+margin_right = 1022.0
+margin_bottom = 523.0
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 12 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=30 freq=2]BẠN ĐÃ NGĂN CHẶN LŨ LỤT THÀNH CÔNG
+Nhưng đây chỉ là một chiến thắng trong game. Hãy cũng nhau góp sức để bảo vệ Trái Đất của chúng ta nhé![/wave][/center]"
+text = "BẠN ĐÃ NGĂN CHẶN LŨ LỤT THÀNH CÔNG
+Nhưng đây chỉ là một chiến thắng trong game. Hãy cũng nhau góp sức để bảo vệ Trái Đất của chúng ta nhé!"
+
+[editable path="Works/WorkCard"]
+[editable path="Works/WorkCard2"]
+[editable path="Works/WorkCard3"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Script/Map/TitleButton.gd" type="Script" id=1]
+
+[node name="TextureButton" type="TextureButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+focus_mode = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+enabled_focus_mode = 1
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_TextureButton_pressed"]
