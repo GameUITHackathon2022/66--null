@@ -1,0 +1,89 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "ActionCard",
+"language": "GDScript",
+"path": "res://Script/Card/ActionCard.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "DisasterCard",
+"language": "GDScript",
+"path": "res://Script/Card/DisasterCard.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "EventCard",
+"language": "GDScript",
+"path": "res://Script/Card/EventCard.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "HumanCard",
+"language": "GDScript",
+"path": "res://Script/Card/HumanCard.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "ResourceCard",
+"language": "GDScript",
+"path": "res://Script/Card/Card.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "WorkCard",
+"language": "GDScript",
+"path": "res://Script/Card/WorkCard.gd"
+} ]
+_global_script_class_icons={
+"ActionCard": "",
+"DisasterCard": "",
+"EventCard": "",
+"HumanCard": "",
+"ResourceCard": "",
+"WorkCard": ""
+}
+
+[application]
+
+config/name="Game Hack"
+run/main_scene="res://Scene/Map/TitleScreen.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GlobalVariables="*res://Scene/Base/GlobalVariables.tscn"
+SceneChanger="*res://Scene/Base/SceneChanger.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+mouse_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
